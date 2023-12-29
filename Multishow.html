@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reprodutor de Vídeo</title>
+    <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+    <script src="https://unpkg.com/video.js/dist/video.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Para esconder as barras de rolagem */
+            background-image: url('https://bk.ibxk.com.br/2015/03/30/30140029808008.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+        }
+
+        #my-video {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            display: block;
+        }
+
+        h1 {
+            color: #e41d25; /* Vermelho SBT */
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Branco com opacidade */
+            margin-bottom: 0;
+        }
+
+        #fullscreen-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #e41d25; /* Vermelho SBT */
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Multishow</h1>
+    <button id="fullscreen-btn">Tela Cheia</button>
+    <video id="my-video" class="video-js" controls preload="auto" autoplay data-setup="{}">
+        <source src="https://s.m3u9.top/a2/hls1/multishow-sd/__index.m3u8?mu3zAQc9HC3GbwJq=5gmKw4TvYcbKmQzrPhc0tA&3U1G7qaTxrPbalZnEx=1703906283" type="application/x-mpegURL">
+        Seu navegador não suporta o elemento de vídeo.
+    </video>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var video = videojs('my-video');
+
+            // Adiciona um evento para entrar em tela cheia quando o botão é clicado
+            document.getElementById('fullscreen-btn').addEventListener('click', function() {
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.webkitRequestFullscreen) {
+                    video.webkitRequestFullscreen();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
